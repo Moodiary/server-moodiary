@@ -1,12 +1,13 @@
 var createError = require('http-errors');
 var express = require('express');
-var router = express.Router();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var signupRouter = require('./routes/signup'); // 회원가입 라우터
+const router = require('./routes/index');
 
 var app = express();
 
@@ -20,8 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 라우터 사용 정의
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/user', signupRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
