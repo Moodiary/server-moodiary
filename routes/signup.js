@@ -17,8 +17,8 @@ router.post('/signup', function(req, res) {
     var query = 'INSERT INTO user (user_id, user_pw, user_name, user_email, salt) VALUES (?,?,?,?,?)'; // 회원가입 쿼리문
 
     // 아이디 중복 확인
-    connection.query('SELECT user_id FROM user WHERE user_id = ?' , user_id, function (error, results, fields) {
-        if(results.length == 0) { // 중복된 아이디가 없을 경우
+    connection.query('SELECT user_id FROM user WHERE user_id = ?' , user_id, function (error, result) {
+        if(result.length == 0) { // 중복된 아이디가 없을 경우
             if(error) { // 에러 발생시
                 console.log("error ocurred", error);
                 res.send({"code" : 400, "failed": "error ocurred"});
@@ -30,7 +30,7 @@ router.post('/signup', function(req, res) {
                     crypto.pbkdf2(req.body.user_pw, salt, 100, 64, 'sha512', (err, key) => {
                         user_pw = key.toString('base64');
                         // user정보 DB에 저장
-                        connection.query(query , [user_id, user_pw, user_name, user_email, salt], function (error, results, fields) {
+                        connection.query(query , [user_id, user_pw, user_name, user_email, salt], function (error, result) {
                             if (error) { // 에러 발생시
                                 console.log("error ocurred", error);
                                 res.send({

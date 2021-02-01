@@ -7,7 +7,7 @@ var db_info = {
 	dev:{
 		host: 'localhost',
 		user: 'test',
-		password: 'soohyun',
+		password: 'moodiary123!',
 		database: 'moodiary'
     },
     // 실제 운영 서버 환경
