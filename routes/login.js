@@ -56,7 +56,7 @@ router.post('/login', function (req, res) {
                 var hashPw = key.toString('base64');
 
                 if (hashPw != result[0].user_pw) {     //password가 다를 경우
-                    resultCode = 204;
+                    resultCode = 208;
                     message = 'Password is not correct';
                     res.json({
                         'code': resultCode,
