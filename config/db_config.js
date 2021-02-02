@@ -2,7 +2,7 @@
 
 var mysql = require('mysql');
 
-var db_info = {
+const db_info = {
     // 로컬환경
 	dev:{
 		host: 'localhost',
@@ -20,7 +20,7 @@ var db_info = {
 	}	
 };
 
-var db_connection = {
+const db_connection = {
 	init : function(){
         return mysql.createConnection(db_info.dev);
 	}
