@@ -1,10 +1,12 @@
 // 이메일 접속 정보
+
 var nodemailer = require('nodemailer');
+require('dotenv').config();
 
 const config = {
     mailer: {
         user: 'moodiary.official@gmail.com',
-        password: 'moodiary123!'
+        password: process.env.EMAIL_SECRET
     }
 }
 
