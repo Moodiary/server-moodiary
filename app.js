@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var signupRouter = require('./routes/signup'); // 회원가입 라우터
 var loginRouter = require('./routes/login');  //로그인 라우터
 var findidRouter = require('./routes/findid'); // 아이디찾기 라우터
+var findpwRouter = require('./routes/findpw'); // 비밀번호찾기 라우터
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/users', usersRouter);
 app.use('/user', signupRouter);
 app.use('/user', loginRouter);
 app.use('/user', findidRouter);
+app.use('/user', findpwRouter);
 
 
 // catch 404 and forward to error handler
