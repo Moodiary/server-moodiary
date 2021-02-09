@@ -5,7 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var signupRouter = require('./routes/signup'); // 회원가입 라우터
+var loginRouter = require('./routes/login');  //로그인 라우터
+var findidRouter = require('./routes/findid'); // 아이디찾기 라우터
+var findpwRouter = require('./routes/findpw'); // 비밀번호찾기 라우터
+var changepwRouter = require('./routes/changepw'); // 비밀번호 변경 라우터
+var deleteuserRouter = require('./routes/deleteuser'); // 회원탈퇴 라우터
 
 var app = express();
 
@@ -19,8 +24,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 라우터 사용 정의
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', signupRouter);
+app.use('/user', loginRouter);
+app.use('/user', findidRouter);
+app.use('/user', findpwRouter);
+app.use('/user', changepwRouter);
+app.use('/user', deleteuserRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,4 +50,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+//module.exports = app;
+app.listen(3000);
