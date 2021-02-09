@@ -1,17 +1,12 @@
-//로그인
+//로그인 기능 구현
 //Author : seungyeon, Last Modified : 2021.02.01
 
-var mysql = require('mysql');
 var express = require('express');
 var router = express.Router();
-//var bodyParser = require('body-parser');
 var config = require('../config/db_config');
 var crypto = require('crypto');
 var connection = config.init();
 connection.connect();
-
-//app.use(bodyParser.json()); //json 형태로 parsing
-//app.use(bodyParser.urlencoded({extended: true}));
 
 router.post('/login', function (req, res) {
     var user_id = req.body.user_id; //사용자 아이디
