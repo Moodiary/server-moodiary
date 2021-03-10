@@ -1,5 +1,6 @@
 //로그인 기능 구현
 //Author : seungyeon, Last Modified : 2021.02.01
+//Author : soohyun, Last Modified : 2021.03.10
 
 var express = require('express');
 var router = express.Router();
@@ -16,7 +17,7 @@ router.post('/login', function (req, res) {
 
     // 사용자 ID가 있는지 확인 -> 있으면 salt값 가져옴
     connection.query('select * from user where user_id = ?', user_id, function (err, result) {
-        if(err) {
+        if(err) { // 에러 발생시
             res.json({
                 'code': 404,
                 'message': 'error'
@@ -29,7 +30,7 @@ router.post('/login', function (req, res) {
                     'code': resultCode,
                     'message': message
                 });
-            } else {
+            } else { // ID가 있는 경우
                 salt = result[0].salt;
                 console.log("salt " + salt); 
             }
@@ -40,7 +41,7 @@ router.post('/login', function (req, res) {
         var resultCode = 404;
         var message = 'error';
 
-        if (err) {
+        if (err) { // 에러 발생시
             console.log(err);
             res.json({
                 'code': resultCode,
@@ -59,9 +60,11 @@ router.post('/login', function (req, res) {
                     });
                 } else {
                     resultCode = 200;   //로그인에 성공했을 경우
-                    message = 'log-in succeed!\nWelcome ' + result[0].user_name;
+                    message = 'log-in succeed! Welcome ' + result[0].user_name;
                     res.json({
                         'code': resultCode,
+                        'name': result[0].user_name,
+                        'email': result[0].user_email,
                         'message': message
                     });
                 }
