@@ -2,11 +2,10 @@
 // Author : seungyeon, Last Modified : 2021.04.02
 
 var express = require("express");
-const db_connection = require("../config/db_config");
 var router = express.Router();
 var config = require('../config/db_config');
-var connect = config.init();
-db_connection.connect();
+var connection = config.init();
+connection.connect();
 
 router.post('/savediary', function(req, res){
     var user_id = req.body.user_id; //사용자 아이디
@@ -16,7 +15,7 @@ router.post('/savediary', function(req, res){
     var query = 'INSERT INTO diary (user_id, content, emotion, created_at) VALUES (?,?,?,?)'; // 일기 쿼리문
 
     // diary정보 DB에 저장
-    connection.query(query , [user_id, connect, emotion, created_at], function (error, result) {
+    connection.query(query , [user_id, content, emotion, created_at], function (error, result) {
         if (error) { // 에러 발생시
             console.log("error ocurred: ", error);
             res.json({ "code" : 400, "result": "error ocurred" })
