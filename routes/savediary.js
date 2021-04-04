@@ -11,8 +11,7 @@ router.post('/savediary', function(req, res){
     var user_id = req.body.user_id; //사용자 아이디
     var content = req.body.content; //일기 내용
     var emotion = req.body.emotion; //일기 감정
-    var created_at = req.body.created_at; //일기 생성 날짜
-    var query = 'INSERT INTO diary (user_id, content, emotion, created_at) VALUES (?,?,?,?)'; // 일기 쿼리문
+    var query = 'INSERT INTO diary (user_id, content, emotion, created_at) VALUES (?,?,?,CURDATE())'; // 일기 쿼리문
 
     // diary정보 DB에 저장
     connection.query(query , [user_id, content, emotion, created_at], function (error, result) {
