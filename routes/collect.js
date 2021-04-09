@@ -13,7 +13,6 @@ router.post('/collect', function(req, res){
     var query = 'SELECT content, emotion, created_at FROM diary WHERE user_id = ?'
 
     var jArray = new Array(); // JsonArray를 위한 배열생성
-    var result_json = new Object();
 
     // DB에서 사용자ID에 맞는 일기 내용 조회
     connection.query(query, user_id, function (error, result){
@@ -37,12 +36,11 @@ router.post('/collect', function(req, res){
 
                     jArray.push(jObj);
                 }
-                result_json.arr = jArray;
 
                 console.log("collect success");
                 res.json({ "code": 200,
                 "result": "collect success",
-                "result_json": result_json
+                "jArray": jArray
                 });
             }    
         }
