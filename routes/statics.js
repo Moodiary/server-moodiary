@@ -32,7 +32,6 @@ router.post('/statics', function(req, res){
                 res.json({ "code": 204, "result": "no diary" });
             } else {
                 for(var i=0; i<result.length; i++) {
-                    console.log(result[i].count);
                     switch(result[i].emotion) {
                         case "행복":
                             pleasure = result[i].count;
