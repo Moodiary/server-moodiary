@@ -14,7 +14,7 @@ router.post('/savediary', function(req, res){
     var query = 'INSERT INTO diary (user_id, content, emotion, created_at) VALUES (?,?,?,CURDATE())'; // 일기 쿼리문
 
     // diary정보 DB에 저장
-    connection.query(query , [user_id, content, emotion, created_at], function (error, result) {
+    connection.query(query , [user_id, content, emotion], function (error, result) {
         if (error) { // 에러 발생시
             console.log("error ocurred: ", error);
             res.json({ "code" : 400, "result": "error ocurred" })
