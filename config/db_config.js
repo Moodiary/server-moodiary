@@ -8,7 +8,7 @@ const db_info = {
 	dev:{
 		host: 'localhost',
 		user: 'test',
-		password: process.env.DB_SECRET, 
+		password: process.env.DB_SECRET,
 		database: 'moodiary'
     },
     // 실제 운영 서버 환경
