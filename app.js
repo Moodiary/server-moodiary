@@ -14,6 +14,7 @@ var deleteuserRouter = require('./routes/deleteuser'); // 회원탈퇴 라우터
 var savediaryRouter = require('./routes/savediary'); //일기저장 라우터
 var staticsRouter = require('./routes/statics'); // 일기감정통계 라우터
 var collectRouter = require('./routes/collect'); //일기모아보기달력 라우터
+var deletediaryRouter = require('./routes/deletediary'); //일기 삭제 라우터
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/user', deleteuserRouter);
 app.use('/diary', savediaryRouter);
 app.use('/diary', staticsRouter);
 app.use('/diary', collectRouter);
+app.use('/diary', deletediaryRouter);
 
 
 // catch 404 and forward to error handler
