@@ -13,7 +13,7 @@ const db_info = {
     },
     // 실제 운영 서버 환경
 	real: {
-		host: 'moodiary-db.ct31r010pyis.us-east-2.rds.amazonaws.com',
+		host: 'moodiary-db.cnnjadm4kiim.ap-northeast-2.rds.amazonaws.com',
         port: 3306,
         user: 'moodiary',
         password : process.env.DB_SECRET,
