@@ -13,7 +13,7 @@ const db_info = {
     },
     // 실제 운영 서버 환경
 	real: {
-		host: 'moodiary-db.cnnjadm4kiim.ap-northeast-2.rds.amazonaws.com',
+		host: 's',
         port: 3306,
         user: 'moodiary',
         password : process.env.DB_SECRET,
@@ -23,7 +23,7 @@ const db_info = {
 
 const db_connection = {
 	init : function(){
-        return mysql.createConnection(db_info.real);
+        return mysql.createConnection(db_info.dev);
 	}
 };
 
