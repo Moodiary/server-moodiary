@@ -11,6 +11,11 @@ var findidRouter = require('./routes/findid'); // 아이디찾기 라우터
 var findpwRouter = require('./routes/findpw'); // 비밀번호찾기 라우터
 var changepwRouter = require('./routes/changepw'); // 비밀번호 변경 라우터
 var deleteuserRouter = require('./routes/deleteuser'); // 회원탈퇴 라우터
+var savediaryRouter = require('./routes/savediary'); //일기저장 라우터
+var staticsRouter = require('./routes/statics'); // 일기감정통계 라우터
+var collectRouter = require('./routes/collect'); //일기모아보기달력 라우터
+var deletediaryRouter = require('./routes/deletediary'); //일기 삭제 라우터
+var todaydiaryRouter = require('./routes/todaydiary'); // 오늘 일기 조회 라우터
 
 var app = express();
 
@@ -32,6 +37,11 @@ app.use('/user', findidRouter);
 app.use('/user', findpwRouter);
 app.use('/user', changepwRouter);
 app.use('/user', deleteuserRouter);
+app.use('/diary', savediaryRouter);
+app.use('/diary', staticsRouter);
+app.use('/diary', collectRouter);
+app.use('/diary', deletediaryRouter);
+app.use('/diary', todaydiaryRouter);
 
 
 // catch 404 and forward to error handler
@@ -50,5 +60,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//module.exports = app;
-app.listen(3000);
+module.exports = app; 
+//app.listen(3000);

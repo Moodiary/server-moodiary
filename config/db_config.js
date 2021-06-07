@@ -12,12 +12,12 @@ const db_info = {
 		database: 'moodiary'
     },
     // 실제 운영 서버 환경
-	real:{
-		host: '',
-		port: '',
-		user: '',
-		password : '',
-		database : ''
+	real: {
+		host: 's',
+        port: 3306,
+        user: 'moodiary',
+        password : process.env.DB_SECRET,
+        database : 'moodiary'
 	}	
 };
 
