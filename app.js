@@ -16,6 +16,7 @@ var staticsRouter = require('./routes/statics'); // 일기감정통계 라우터
 var collectRouter = require('./routes/collect'); //일기모아보기달력 라우터
 var deletediaryRouter = require('./routes/deletediary'); //일기 삭제 라우터
 var todaydiaryRouter = require('./routes/todaydiary'); // 오늘 일기 조회 라우터
+var playmusicRouter = require('./routes/playmusic'); // 음악 재생 라우터
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/diary', staticsRouter);
 app.use('/diary', collectRouter);
 app.use('/diary', deletediaryRouter);
 app.use('/diary', todaydiaryRouter);
+app.use('/music', playmusicRouter);
 
 
 // catch 404 and forward to error handler
