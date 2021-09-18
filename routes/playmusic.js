@@ -1,5 +1,5 @@
 // 감정에 따른 음악 재생
-// Author : soohyun, Last Modified : 2021.07.05
+// Author : soohyun, Last Modified : 2021.07.15
 
 var express = require("express");
 var router = express.Router();
@@ -138,7 +138,7 @@ router.get('/sad', function(req, res){
 
 // 놀람
 router.get('/surprise', function(req, res){
-  var random = new Array('1', '2', '3') // 음악 목록
+  var random = new Array('1', '2', '3', '4') // 음악 목록
   var musicName = "../music/surprise_" + random[Math.floor(Math.random()*random.length)] + ".mp3" // 음악 목록 중 랜덤으로 하나를 가져와서 음악명 생성
   var filePath = path.join(__dirname, musicName) // 음악 파일 경로
   var stream = fs.createReadStream(filePath); // 파일 읽는 스트림
